@@ -13,3 +13,5 @@ git commit "file" -m "commit message"
 submitt changes to shared git:
 git push
 
+Howto make a patch
+git format-patch --root origin
