@@ -1,0 +1,6 @@
+This file fill contain a list of things to do for the application.
+
+- Create a file reader/writer that can handle linux paths/files
+- Create a file reader/writer that can handle windows paths/files
+
+
