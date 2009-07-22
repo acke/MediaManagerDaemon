@@ -16,4 +16,3 @@ git push
 Howto make a patch
 git format-patch --root origin
 
-kebab aer inte goett
