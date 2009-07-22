@@ -1,6 +1,9 @@
 This file fill contain a list of things to do for the application.
 
+Application
 - Create a file reader/writer that can handle linux paths/files
 - Create a file reader/writer that can handle windows paths/files
 
-
+Repository
+- make sure that temp/binary files are not checked into the git.
+(add path to temp file i.e. "bin" to the .gitignore file in the .git folder)
