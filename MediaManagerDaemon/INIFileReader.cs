@@ -5,17 +5,17 @@ namespace MediaManagerDaemon
 {
     class INIFileReader
     {
-var data = new INIFileReader<string, string>();
-foreach (var row in File.ReadAllLines(PATH_TO_FILE))
-  data.Add(row.Split('=')[0], row.Split('=')[1]);
+        var data = new INIFileReader<string, string>();
+        foreach (var row in File.ReadAllLines(PATH_TO_FILE))
+          data.Add(row.Split('=')[0], row.Split('=')[1]);
 
-Console.WriteLine(data["ServerName"]);
+        //Console.WriteLine(data["ServerName"]);
     }
-}
 
-INIFileReader<string,string> Properties = GetProperties("data.txt");
-Console.WriteLine("Hello: " + Properties["Hello"]);
-Console.ReadKey();
+
+//INIFileReader<string,string> Properties = GetProperties("data.txt");
+//Console.WriteLine("Hello: " + Properties["Hello"]);
+//Console.ReadKey();
 
 public static INIFileReader<string, string> GetProperties(string path)
 {
@@ -35,29 +35,30 @@ public static INIFileReader<string, string> GetProperties(string path)
     return Properties;
 }
 
-public static IINIFileReader ParseINIFileReader(string fileName)
-{
-    INIFileReader<string, string> iniFileProperties = new INIFileReader<string, string>();
-    foreach (string line in File.ReadAllLines(fileName))
+    public static IINIFileReader ParseINIFileReader(string fileName)
     {
-        if ((!string.IsNullOrEmpty(line)) &&
-            (!line.StartsWith(";")) &&
-            (!line.StartsWith("#")) &&
-            (!line.StartsWith("'")) &&
-            (line.Contains('=')))
+        INIFileReader<string, string> iniFileProperties = new INIFileReader<string, string>();
+        foreach (string line in File.ReadAllLines(fileName))
         {
-            int index = line.IndexOf('=');
-            string key = line.Substring(0, index).Trim();
-            string value = line.Substring(index + 1).Trim();
-
-            if ((value.StartsWith("\"") && value.EndsWith("\"")) ||
-                (value.StartsWith("'") && value.EndsWith("'")))
+            if ((!string.IsNullOrEmpty(line)) &&
+                (!line.StartsWith(";")) &&
+                (!line.StartsWith("#")) &&
+                (!line.StartsWith("'")) &&
+                (line.Contains('=')))
             {
-                value = value.Substring(1, value.Length - 2);
-            }
-            iniFileProperties.Add(key, value);
-        }
-    }
+                int index = line.IndexOf('=');
+                string key = line.Substring(0, index).Trim();
+                string value = line.Substring(index + 1).Trim();
 
-    return iniFileProperties;
+                if ((value.StartsWith("\"") && value.EndsWith("\"")) ||
+                    (value.StartsWith("'") && value.EndsWith("'")))
+                {
+                    value = value.Substring(1, value.Length - 2);
+                }
+                iniFileProperties.Add(key, value);
+            }
+        }
+
+        return iniFileProperties;
+    }
 }
