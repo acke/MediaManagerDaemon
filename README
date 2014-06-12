@@ -3,6 +3,4 @@ version #1
 Howto run in linux:
 mono app.exe
 
-git quick referens:
-git clone git://github.com/acke/MediaManagerDeamon.git
 
